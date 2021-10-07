@@ -160,7 +160,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
-        
+        btnCClick(null);
     }
 
     // Alarmの処理
@@ -182,12 +182,15 @@
     function btnAClick(e){
         active = true;
         startTime = new Date();
-        
+        $("#btnA").prop("disabled",true);
+        $("#btnB").prop("disabled",false);
     }
 
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        $("#btnB").prop("disabled",true);
+        $("#btnA").prop("disabled",false);
         
     }
 
@@ -198,6 +201,7 @@
         period = 60*parseInt( $("#minute").val())+parseInt($("#second").val());
         $("#time").html("経過時間:0");
         $("#remain").html("残り時間:"+period);
+        $("#btnA").prop("disabled",false);
     }
     
  
@@ -206,8 +210,10 @@
         if(active){
           var time = parseInt( (new Date() -startTime)/1000);
           var rest=period-time;
+          var m=parseInt(rest/60);
+          var s=parseInt(rest-m*60);
           $("#time").html("経過時間:"+time);
-          $("#remain").html("残り時間:"+rest);
+          $("#remain").html("残り時間:"+m+"分"+s+"秒");
           analog(rest);
         }
         if(rest<=0){
