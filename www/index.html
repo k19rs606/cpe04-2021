@@ -199,8 +199,10 @@
         alarm();
         active = false;
         period = 60*parseInt( $("#minute").val())+parseInt($("#second").val());
+         var m=parseInt(period/60);
+         var s=parseInt(period-m*60);
         $("#time").html("経過時間:0");
-        $("#remain").html("残り時間:"+period);
+        $("#remain").html("残り時間:"+m+"分"+s+"秒");
         $("#btnA").prop("disabled",false);
     }
     
