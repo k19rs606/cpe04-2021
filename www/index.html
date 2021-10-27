@@ -202,7 +202,7 @@
         period = 60*parseInt( $("#minute").val())+parseInt($("#second").val());
          var m=parseInt(period/60);
          var s=parseInt(period-m*60);
-        $("#time").html("経過時間:0");
+        $("#time").html("経過時間:0秒");
         $("#remain").html("残り時間:"+m+"分"+s+"秒");
         $("#btnA").prop("disabled",false);
         $('#over').html("");
@@ -216,7 +216,7 @@
           var rest=period-time;
           var m=parseInt(rest/60);
           var s=parseInt(rest-m*60);
-          $("#time").html("経過時間:"+time);
+          $("#time").html("経過時間:"+time+"秒");
           $("#remain").html("残り時間:"+m+"分"+s+"秒");
           analog(rest);
         }
