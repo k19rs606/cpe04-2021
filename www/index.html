@@ -155,6 +155,8 @@
     // 変数宣言
     var active = false;
     var startTime= 0;
+    var stopTime = 0;
+    var restartTime = 0;
     var period = 0;
 
     
@@ -183,7 +185,7 @@
         
     }
     
-    // ButtonAがクリックされた時の処理
+    // Startボタンがクリックされた時の処理
     function btnAClick(e){
         active = true;
         startTime = new Date();
@@ -198,9 +200,11 @@
         $("#btnD").css("background-color","#F9D5A7");
     }
 
-    // ButtonBがクリックされた時の処理
+    // Stopボタンがクリックされた時の処理
     function btnBClick(e){
         active = false;
+        stopTime=new Date()-startTime ;
+
         $("#btnB").prop("disabled",true);
         $("#btnA").prop("disabled",false);
         $("#btnC").prop("disabled",false);
@@ -214,7 +218,7 @@
         
     }
 
-    // ButtonCがクリックされた時の処理
+    // Setボタンがクリックされた時の処理
     function btnCClick(e){
         //alarm();
         active = false;
@@ -225,7 +229,6 @@
         $("#remain").html("残り時間:"+m+"分"+s+"秒");
         $('#over').html("");
 
-        $("#btnC").prop("disabled",true);
         $("#btnA").prop("disabled",false);
         $("#btnB").prop("disabled",false);
         $("#btnD").prop("disabled",false);
@@ -236,8 +239,15 @@
         $("#btnD").css("background-color","#F9D5A7");
     }
 
-    function btnDclick(e){
-
+    //Restartボタンがクリックされたときの処理
+    function btnDClick(e){
+      restartTime= new Date()-stopTime;
+         var m=parseInt(restartTime/60);
+         var s=parseInt(restartTime-m*60);
+      //  $("#time").html("経過時間:0秒");
+      // $("#remain").html("残り時間:"+m+"分"+s+"秒");
+        $('#over').html("");
+      active=true;
         $("#btnD").prop("disabled",true);
         $("#btnA").prop("disabled",false);
         $("#btnC").prop("disabled",false);
