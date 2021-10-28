@@ -38,6 +38,9 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+         $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
         init();
     });
     
@@ -160,6 +163,7 @@
         $('#btnA').prop('disabled', false);
         $('#btnB').prop('disabled', false);
         $('#btnC').prop('disabled', false);
+        $('#btnD').prop('disabled', false);
         btnCClick(null);
     }
 
@@ -185,6 +189,13 @@
         startTime = new Date();
         $("#btnA").prop("disabled",true);
         $("#btnB").prop("disabled",false);
+        $("#btnC").prop("disabled",false);
+        $("#btnD").prop("disabled",false);
+        
+        $("#btnA").css("background-color","#FFB085");
+        $("#btnB").css("background-color","#F9D5A7");
+        $("#btnC").css("background-color","#F9D5A7");
+        $("#btnD").css("background-color","#F9D5A7");
     }
 
     // ButtonBがクリックされた時の処理
@@ -192,6 +203,14 @@
         active = false;
         $("#btnB").prop("disabled",true);
         $("#btnA").prop("disabled",false);
+        $("#btnC").prop("disabled",false);
+        $("#btnD").prop("disabled",false);
+        
+
+        $("#btnB").css("background-color","#FFB085");
+        $("#btnA").css("background-color","#F9D5A7");
+        $("#btnC").css("background-color","#F9D5A7");
+        $("#btnD").css("background-color","#F9D5A7");
         
     }
 
@@ -204,8 +223,30 @@
          var s=parseInt(period-m*60);
         $("#time").html("経過時間:0秒");
         $("#remain").html("残り時間:"+m+"分"+s+"秒");
-        $("#btnA").prop("disabled",false);
         $('#over').html("");
+
+        $("#btnC").prop("disabled",true);
+        $("#btnA").prop("disabled",false);
+        $("#btnB").prop("disabled",false);
+        $("#btnD").prop("disabled",false);
+
+        $("#btnC").css("background-color","#FFB085");
+        $("#btnB").css("background-color","#F9D5A7");
+        $("#btnA").css("background-color","#F9D5A7");
+        $("#btnD").css("background-color","#F9D5A7");
+    }
+
+    function btnDclick(e){
+
+        $("#btnD").prop("disabled",true);
+        $("#btnA").prop("disabled",false);
+        $("#btnC").prop("disabled",false);
+        $("#btnB").prop("disabled",false);
+
+        $("#btnD").css("background-color","#FFB085");
+        $("#btnB").css("background-color","#F9D5A7");
+        $("#btnC").css("background-color","#F9D5A7");
+        $("#btnA").css("background-color","#F9D5A7");
     }
     
  
